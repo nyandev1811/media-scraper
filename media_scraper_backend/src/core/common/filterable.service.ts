@@ -16,9 +16,8 @@ export class FilterableService {
     Object.entries(filters).forEach(([key, value]) => {
       if (value === undefined || value === null || value === '') return;
 
-      const hasColumn = qb.connection
-        .getMetadata(qb.alias)
-        .columns.some((c) => c.propertyName === key);
+      const metadata = qb.expressionMap.mainAlias?.metadata;
+      const hasColumn = metadata?.columns.some((c) => c.propertyName === key);
 
       if (hasColumn) {
         if (Array.isArray(value)) {
@@ -45,7 +44,7 @@ export class FilterableService {
         new Brackets((inner) => {
           searchFields.forEach((field) => {
             const column = field.includes('.') ? field : `${alias}.${field}`;
-            inner.orWhere(`${column} ILIKE :search`, { search: `%${search}%` });
+            inner.orWhere(`${column} LIKE :search`, { search: `%${search}%` });
           });
         }),
       );
