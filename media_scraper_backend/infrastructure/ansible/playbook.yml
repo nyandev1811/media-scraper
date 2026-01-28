@@ -1,0 +1,59 @@
+---
+- name: Deploy Media Scraper Stack
+  hosts: all
+  become: yes
+  vars:
+    project_dir: /opt/media_scraper
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install required system packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - git
+        state: present
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install Docker and Docker Compose
+      apt:
+        name:
+          - docker-ce
+          - docker-compose-plugin
+        state: present
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add ubuntu user to docker group (run docker without sudo)
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Start Independent Redis Container
+      shell: |
+        docker run -d --name independent-redis \
+        -p 6379:6379 \
+        --restart always \
+        redis:alpine
+      ignore_errors: yes # Ignore if already running/name conflict

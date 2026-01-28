@@ -1,0 +1,12 @@
+{"test_name": "Scenario 1 - Moderate Complexity", "start_time": "2026-01-28T02:05:50+07:00", "results": [
+{"url": "https://docs.nestjs.com/fundamentals/dynamic-modules", "status": "success", "http_code": 201, "duration_ms": 45, "media_count": 0}
+,
+{"url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "status": "success", "http_code": 201, "duration_ms": 47, "media_count": 0}
+,
+{"url": "https://nextjs.org/docs/getting-started", "status": "success", "http_code": 201, "duration_ms": 34, "media_count": 0}
+,
+{"url": "https://react.dev/learn/thinking-in-react", "status": "success", "http_code": 201, "duration_ms": 33, "media_count": 0}
+,
+{"url": "https://docs.nestjs.com/modules", "status": "success", "http_code": 201, "duration_ms": 32, "media_count": 0}
+
+], "end_time": "2026-01-28T02:05:51+07:00", "summary": {"total": 5, "success": 5, "failed": 0}}

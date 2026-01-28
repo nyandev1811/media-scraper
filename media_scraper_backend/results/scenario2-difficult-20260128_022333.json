@@ -1,0 +1,12 @@
+{"test_name": "Scenario 2 - Difficult Sites", "start_time": "2026-01-28T02:23:33+07:00", "results": [
+{"url": "https://unsplash.com/s/photos/nature", "status": "no_results", "http_code": 201, "duration_ms": 46, "media_count": 0}
+,
+{"url": "https://dribbble.com/shots/popular", "status": "no_results", "http_code": 201, "duration_ms": 33, "media_count": 0}
+,
+{"url": "https://www.pinterest.com/search/pins/?q=design", "status": "no_results", "http_code": 201, "duration_ms": 35, "media_count": 0}
+,
+{"url": "https://unsplash.com/s/photos/technology", "status": "no_results", "http_code": 201, "duration_ms": 37, "media_count": 0}
+,
+{"url": "https://dribbble.com/tags/ui-design", "status": "no_results", "http_code": 201, "duration_ms": 31, "media_count": 0}
+
+], "end_time": "2026-01-28T02:23:33+07:00", "summary": {"total": 5, "success": 0, "failed": 0}}
